@@ -1,0 +1,19 @@
+{% extends 'LibTrade/base.html' %}
+
+<!-- {% load crispy_forms_tags %} -->
+{% load bootstrap4 %}
+
+
+{% block content %}
+<div class="container pb-5">
+
+  <form class=""method="post" >
+
+    {% csrf_token %}
+    {% bootstrap_form form %}
+       <button type="submit" class="btn btn-success"> Save Account! </button>
+
+  </form>
+
+</div>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'LibTrade/base.html' %}
+
+{% load bootstrap4 %}
+{% block content %}
+<div class="container pb-5">
+  <h3> User Login </h3>
+  <form method="post">
+    {% csrf_token %}
+      {% bootstrap_form form %}
+    <input type="submit" value="Login" class="btn btn-success ">
+  </form>
+</div>
+
+{% endblock %}

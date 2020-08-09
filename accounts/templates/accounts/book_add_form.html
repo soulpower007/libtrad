@@ -1,0 +1,27 @@
+{% extends 'LibTrade/base.html' %}
+
+{% load bootstrap4 %}
+{% block content %}
+
+<h3> Welcome {{user.username}} </h3>
+<div class="container py-3">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item active" aria-current="page">Add a new Book</li>
+    </ol>
+  </nav>
+  <div class="row">
+    <div class="col-md-6 col-sm-8 col-12">
+      <form method="post" enctype="multipart/form-data" novalidate>
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <button type="submit" class="btn btn-success">Save</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+<!-- <li class="breadcrumb-item"><a href="{% url 'teachers:quiz_change_list' %}">My Books </a></li> -->
+
+<!-- <a href="{% url 'teachers:quiz_change_list' %}" class="btn btn-outline-secondary" role="button">Nevermind</a> -->

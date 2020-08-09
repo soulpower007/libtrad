@@ -1,0 +1,105 @@
+{% extends 'LibTrade/base.html' %}
+
+{% load bootstrap4 %}
+{% block content %}
+
+<h3 class="text-center"> Welcome {{user.username}} </h3>
+
+
+<div class="container-fluid py-3">
+    <h2>NOW owned BOOKS</h2><br>
+    {% for book in user.owned_books.all %}
+      {% if forloop.counter0|divisibleby:4 %} <div class="row text-center"> {%  endif %}
+          <div class="col-md-3">
+            <div class="card">
+      				<img class="card-img-top" src="{{ book.image.url }}">
+      				<div class="card-body">
+      					<h4 class="card-title">{{book.name}}</h4>
+      					<p class="card-text"> Author: {{book.author}} | Owner: {{book.owner}} </p>
+                <p>
+                {% for tag in book.tags.all %}
+                  <a href="{% url 'accounts:taglist' slug=tag.slug %}" class="btn btn-outline-info"> {{tag}} </a>
+                {% endfor %}
+                </p>
+      					<a href="{% url 'accounts:bookdelete' slug=book.slug %}" class="btn btn-outline-danger">DeleteBook</a>
+              </div>
+      			</div>
+          </div>
+      {%  if forloop.counter|divisibleby:4 or forloop.last %}</div><!-- row closing --><hr>{%  endif %}
+    {% endfor %}
+
+
+  <h2>NOW KEPT BOOKS</h2><br>
+  {% for book in user.kept_books.all %}
+    {% if forloop.counter0|divisibleby:4 %} <div class="row text-center"> {%  endif %}
+        <div class="col-md-3">
+          <div class="card">
+            <img class="card-img-top" src="{{ book.image.url }}">
+            <div class="card-body">
+              <h4 class="card-title">{{book.name}}</h4>
+              <p class="card-text"> Author: {{book.author}}  </p>
+              <br>
+              <p>
+              {% for tag in book.tags.all %}
+                <a href="{% url 'accounts:taglist' slug=tag.slug %}" class="btn btn-outline-info"> {{tag}} </a>
+              {% endfor %}
+              </p>
+              <a href="{% url 'accounts:reqtrade' slug=book.slug %}" class="btn btn-outline-secondary">Req Trade</a>
+            </div>
+          </div>
+        </div>
+    {%  if forloop.counter|divisibleby:4 or forloop.last %}</div><!-- row closing --><hr>{%  endif %}
+  {% endfor %}
+      <h2>Requested Books</h2><br>
+      {% for trade in user.requested_books.all %}
+        {% if forloop.counter0|divisibleby:4 %} <div class="row text-center"> {%  endif %}
+            <div class="col-md-3">
+              <div class="card">
+                <img class="card-img-top" src="{{ trade.book.image.url }}">
+                <div class="card-body">
+                  <h4 class="card-title">{{trade.book.name}} </h4>
+                  <p class="card-text">
+                            Author:{{trade.book.author}} | Owner : {{trade.book.owner}} </p>
+                  <p>
+                  {% for tag in trade.book.tags.all %}
+                    <a href="{% url 'accounts:taglist' slug=tag.slug %}" class="btn btn-outline-info"> {{tag}} </a>
+                  {% endfor %}
+                  </p>
+                  <a href="{% url 'accounts:tradedelete' idd=trade.trade_id  %}"  class="btn btn-outline-danger" >Delete </a>
+                </div>
+              </div>
+            </div>
+        {%  if forloop.counter|divisibleby:4 or forloop.last %}</div><!-- row closing --><hr>{%  endif %}
+      {% endfor %}
+
+
+          <h2>Books to approve: </h2><br>
+          {% for trade in user.authorize_books.all %}
+            {% if forloop.counter0|divisibleby:4 %} <div class="row text-center"> {%  endif %}
+                <div class="col-md-3">
+                  <div class="card">
+                    <img class="card-img-top" src="{{ trade.book.image.url }}">
+                    <div class="card-body">
+                      <h4 class="card-title">{{trade.book.name}} </h4>
+                      <p class="card-text">
+                                Author:{{trade.book.author}} | Owner : {{trade.book.owner}} </p>
+                      <p>
+                      {% for tag in trade.book.tags.all %}
+                        <a href="{% url 'accounts:taglist' slug=tag.slug %}" class="btn btn-outline-info"> {{tag}} </a>
+                      {% endfor %}
+                      </p>
+                      <a href="{% url 'accounts:tradedelete' idd=trade.trade_id  %}"  class="btn btn-outline-danger" >Delete </a>
+                      <a href="{% url 'accounts:tradeapprove' id=trade.trade_id  %}"  class="btn btn-outline-primary" > Approve </a>
+                    </div>
+                  </div>
+                </div>
+            {%  if forloop.counter|divisibleby:4 or forloop.last %}</div><!-- row closing --><hr>{%  endif %}
+          {% endfor %}
+
+
+</div>
+
+{% endblock %}
+<!-- <li class="breadcrumb-item"><a href="{% url 'teachers:quiz_change_list' %}">My Books </a></li> -->
+
+<!-- <a href="{% url 'teachers:quiz_change_list' %}" class="btn btn-outline-secondary" role="button">Nevermind</a> -->

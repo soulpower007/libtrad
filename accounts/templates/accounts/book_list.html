@@ -1,0 +1,29 @@
+{% extends 'LibTrade/base.html' %}
+{% block content %}
+<h1 class="text-center samurai font-weight-light page-header"> Book Repository  </h1>
+<div class="container-fluid py-3">
+{% for book in books %}
+{% if forloop.counter0|divisibleby:4 %} <div class="row text-center"> {%  endif %}
+    <div class="col-md-3">
+      <div class="card">
+				<img class="card-img-top" src="{{ book.image.url }}">
+				<div class="card-body">
+					<h4 class="card-title">{{book.name}}</h4>
+					<p class="card-text"> Author: {{book.author}} | Owner: {{book.owner}}
+            {% if book.owner.is_librarian %}
+            | <span class="bg-warning text-muted"> Library-item </span>
+            {% endif %}
+          </p>
+          <p>
+          {% for tag in book.tags.all %}
+            <a href="{% url 'accounts:taglist' slug=tag.slug %}"> <button type="button" class="btn btn-outline-info">{{tag}}</button> </a>
+          {% endfor %}
+          </p>
+					<a href="{% url 'accounts:reqtrade' slug=book.slug %}" class="btn btn-outline-secondary">Req Trade</a>
+				</div>
+			</div>
+    </div>
+    {%  if forloop.counter|divisibleby:4 or forloop.last %}</div><!-- row closing --><hr>{%  endif %}
+{% endfor %}
+</div>
+{% endblock %}
