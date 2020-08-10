@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'accounts',
+     'accounts',
     'taggit',
     'bootstrap4',
     'crispy_forms',
@@ -155,7 +155,7 @@ django_heroku.settings(locals())
 EMAIL_HOST = 'smpt.gmail.com'
 EMAIL_HOST_USER = 'libtrad345@gmail.com'
 EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = 'libtrad@gmail.com'
+DEFAULT_FROM_EMAIL = 'libtrad345@gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_PASSWORD = '@@sai@@@'
 

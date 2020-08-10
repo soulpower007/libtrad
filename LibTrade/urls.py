@@ -35,7 +35,6 @@ urlpatterns = [
     path('logout/', auth_views.LogoutView.as_view(), name="logout"),
     path('exists/', views.EmailExistsView.as_view(), name="emailexists"),
 
-    # path('validate-email', csrf_exempt(EmailValidationView.as_view()), name='validate_email'),
     path('activate/<uidb64>/<token>', views.VerificationView.as_view(), name='activate'),
 
     path('user/<slug:slug>', views.UserDetailView.as_view(), name = 'userdetail'),

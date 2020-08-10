@@ -15,15 +15,11 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django import forms
 from django.urls import reverse
 
-import smtplib
-
-# from validate_email import validate_email
-
 from django.core.mail import send_mail
 from django.contrib import messages
 from django.core.mail import EmailMessage
 from django.contrib.sites.shortcuts import get_current_site
-# from validate_email import validate_email
+
 from django.contrib.sites.shortcuts import get_current_site
 from django.utils.encoding import force_bytes, force_text, DjangoUnicodeDecodeError
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
@@ -56,7 +52,6 @@ class SignUpView(CreateView):
     template_name = 'Libtrade/signup.html'
 
     def get_context_data(self, **kwargs):
-        # kwargs['user_type'] = 'teacher'
         return super().get_context_data(**kwargs)
 
     def form_valid(self, form):
@@ -68,8 +63,8 @@ class SignUpView(CreateView):
 
         user.slug = slugify(user.username)
         user.is_active = False
-
         user.save()
+
         subject="Thank UUUUUU"
         message="watooott"
         email_conn = smtplib.SMTP(hostt, portt)
