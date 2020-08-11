@@ -90,14 +90,7 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-# <<<<<<< HEAD
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'libtraddb',
-#         'USER':'postgres',
-#         'PASSWORD':'@@sai@@@',
-#         'HOST': 'localhost',
-#         'port': 5432,
-# =======
+
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
