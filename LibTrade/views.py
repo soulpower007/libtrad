@@ -28,12 +28,11 @@ from .utils import account_activation_token
 
 
 
-
 import smtplib
 hostt = "smtp.gmail.com"
 portt = 587
-usernamee = "libtrad345@gmail.com"
-passwordd = "@@sai@@@"
+usernamee = "****"
+passwordd = "****"
 
 
 class UserDetailView(DetailView):

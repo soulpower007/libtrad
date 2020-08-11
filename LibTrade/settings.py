@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'taggit',
     'bootstrap4',
     'crispy_forms',
+    'storages',
 ]
 
 SITE_ID = 1
@@ -140,31 +141,35 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
+# email stuff
+
+EMAIL_HOST = 'smpt.gmail.com'
+EMAIL_HOST_USER = '****'
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = '****'
+EMAIL_PORT = 587
+EMAIL_HOST_PASSWORD = '****'
+
+
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
-STATIC_ROOT =  os.path.join(BASE_DIR, 'assets')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# STATIC_ROOT =  os.path.join(BASE_DIR, 'assets')
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
-# email stuff
-EMAIL_HOST = 'smpt.gmail.com'
-EMAIL_HOST_USER = 'libtrad345@gmail.com'
-EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = 'libtrad345@gmail.com'
-EMAIL_PORT = 587
-EMAIL_HOST_PASSWORD = '@@sai@@@'
 
- # email_conn = smtplib.SMTP(host, port)
+# email_conn = smtplib.SMTP(host, port)
 # email_conn.starttls()
 # email_conn.login(username, password)
 # >> import smtplib
 # >>> host = "smtp.gmail.com"
 # >>> port = 587
-# >>> username = "Sriphani345v@gmail.com"
-# >>> password = "Saiseeker99"
+# >>> username = "@gmail.com"
+# >>> password = ""
 # >>>
 # >>> email_conn = smtplib.SMTP(host, port)
 # >>> email_conn.ehlo()
@@ -177,6 +182,6 @@ EMAIL_HOST_PASSWORD = '@@sai@@@'
 # {}
 # EMAIL_USE_TSL = True
 # EMAIL_HOST =  'smpt.gmail.com'
-# EMAIL_HOST_USER = 'Sriphani345v@gmail.com'
-# EMAIL_HOST_PASSWORD = 'Saiseeker99'
+# EMAIL_HOST_USER = '@gmail.com'
+# EMAIL_HOST_PASSWORD = ''
 # EMAIL_PORT = 587
